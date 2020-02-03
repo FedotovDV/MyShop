@@ -8,10 +8,7 @@ import static java.lang.Integer.parseInt;
 import static java.lang.Integer.valueOf;
 
 /**
- *
  * @author FedotovDV
- *
- *
  */
 public class RashodkaZipArray {
 
@@ -107,7 +104,6 @@ public class RashodkaZipArray {
     }
 
 
-
     private static void buyProduct(String[][] arrayProduct) {
         printPriceList(arrayProduct);
         System.out.println("Выберете товар: введите номер товара или 0 для завершения. ");
@@ -144,7 +140,7 @@ public class RashodkaZipArray {
             if ((itemMenu < 0) || (itemMenu > buyMenu.length - 1)) {
                 System.out.print("Неправильный ввод, введите число от 0 до " + (buyMenu.length - 1) + "\n");
             }
-            if(indexBasketArray == null) {
+            if (indexBasketArray == null) {
                 System.out.println("Корзина пуста");
                 return;
             }
@@ -158,9 +154,9 @@ public class RashodkaZipArray {
                     break;
                 case 3:
                     indexBasketArray = delIndexProduct(indexBasketArray, arrayProduct);
-                    if(indexBasketArray.length>0) {
+                    if (indexBasketArray.length > 0) {
                         printPriceList(indexBasketArray, arrayProduct);
-                    }else {
+                    } else {
                         System.out.println("Корзина пуста");
                         return;
                     }
@@ -177,16 +173,16 @@ public class RashodkaZipArray {
         printPriceList(indexBasketArray, arrayProduct);
         System.out.println("Введите индекс товара, который нужно удалить");
         int inputIndexBasket = getInputIndex();
-        if((inputIndexBasket<-1)||(inputIndexBasket>indexBasketArray.length-1)) {
-            System.out.print("Неправильный ввод, введите число от 1 до " + (arrayProduct.length+1) + "\n");
+        if ((inputIndexBasket < -1) || (inputIndexBasket > indexBasketArray.length - 1)) {
+            System.out.print("Неправильный ввод, введите число от 1 до " + (arrayProduct.length + 1) + "\n");
             inputIndexBasket = getInputIndex();
         }
         return getTempIndex(indexBasketArray, inputIndexBasket);
     }
 
     private static int[] getTempIndex(int[] indexBasketArray, int inputIndexBasket) {
-        int[] indexBasketArrayTemp = new int[indexBasketArray.length-1];
-        int j=0;
+        int[] indexBasketArrayTemp = new int[indexBasketArray.length - 1];
+        int j = 0;
         for (int value : indexBasketArray) {
             if (value != inputIndexBasket) {
                 if (j == indexBasketArray.length - 1) {
@@ -202,19 +198,20 @@ public class RashodkaZipArray {
 
     private static int getInputNumber() {
         int number = inputIntWOExeption();
-        if(number <0){
+        if (number < 0) {
             System.out.println("Неправильный ввод, введите число > 0");
             number = inputIntWOExeption();
         }
         return number;
     }
+
     private static int getInputIndex() {
         int index = inputIntWOExeption();
-        if(index <0){
+        if (index < 0) {
             System.out.println("Неправильный ввод, введите число > 0");
             index = inputIntWOExeption();
         }
-        return index-1;
+        return index - 1;
     }
 
     private static String[][] buyInBasketList(int[] indexBasketArray, String[][] arrayProduct) {
@@ -369,15 +366,15 @@ public class RashodkaZipArray {
 
     private static String[][] deleteProduct(String[][] arrayProduct) {
         printPriceList(arrayProduct);
-        int index= delIndexProduct(arrayProduct);
+        int index = delIndexProduct(arrayProduct);
         return deleteInArray(arrayProduct, index);
     }
 
     private static int delIndexProduct(String[][] arrayProduct) {
         System.out.println("Введите индекс товара, который нужно удалить");
         int index = getInputIndex();
-        while((index<0)||(index>arrayProduct.length)) {
-            System.out.print("Неправильный ввод, введите число от 1 до " + (arrayProduct.length+1) + "\n");
+        while ((index < 0) || (index > arrayProduct.length)) {
+            System.out.print("Неправильный ввод, введите число от 1 до " + (arrayProduct.length + 1) + "\n");
             index = getInputIndex();
         }
         return index;
@@ -472,7 +469,7 @@ public class RashodkaZipArray {
             text = inputBR.readLine();
             number = parseInt(text);
         } catch (NumberFormatException e) {
-            //         System.out.println("Error occurred");
+            System.out.println(e.getMessage());
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -487,7 +484,7 @@ public class RashodkaZipArray {
             text = inputBR.readLine();
             number = Double.parseDouble(text);
         } catch (NumberFormatException e) {
-            //        System.out.println("Error occurred");
+            System.out.println(e.getMessage());
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
